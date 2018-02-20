@@ -40,3 +40,32 @@ h1{
 .loginField{
         background-color: !important;
 }
+
+
+/* Home Page */
+
+.logout{
+    width: 150px !important;
+    height: 40px !important;
+    background-color: black!important; 
+    color: white !important; 
+    border: transparent !important;
+    font-family: verdana, Arial !important;
+    margin-top: 1%;
+    margin-right: 1%;
+    display:block;
+    box-shadow: 0px 0px !important;
+    float: right;
+}
+
+.search{
+    max-width: 300px !important;
+    margin:auto;
+    display:block;
+    }
+
+.header{
+    text-align: center;
+    color: black;
+}
+
