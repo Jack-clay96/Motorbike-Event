@@ -34,7 +34,33 @@ document.addEventListener("deviceready", onDeviceReady, false);
             .catch( gotError );
      });
         
+        /*Register Page */
+    $( "#register" ).click(function() {
+        console.log("button clicked")
+        var email = $("#emailReg").val();
+        var name = $("#nameReg").val();
+        var password = $("#passwordReg").val();
         
+    function userRegistered( user )
+        {
+            console.log( "user has been registered" );
+            location.href="#loginPage";
+        }
+ 
+        function gotError( err ) // see more on error handling
+        {
+            console.log( "error message - " + err.message );
+            console.log( "error code - " + err.statusCode );
+        }
+ 
+        var user = new Backendless.User();
+        user.email = email;
+        user.name = name;
+        user.password = password;
+ 
+        Backendless.UserService.register( user ).then( userRegistered ).catch( gotError );
+        
+    });
         /* Home Page */
         
         //Logout Button
