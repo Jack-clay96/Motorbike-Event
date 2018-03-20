@@ -62,6 +62,10 @@
         <input class="clear" type="text" id="username" placeholder="Search"/> <!--Something from Ionic better?-->
             
         <!-- Create list of motorbike events // Also need GPRS location.-->
+            <ul data-role="listview" id="taskList" data-inset = "true"> <!-- data inset need for border -->
+	            <li>First Event</li>
+   	            <li>Another Event</li>
+            </ul>
         </div>
     </div>
         
@@ -69,11 +73,17 @@
  
     <!-- Panel / Action bar -->
     <div data-role="panel" id="myPanel" data-position="left" data-display="overlay" data-theme="a">
-        <h2>See pages</h2>
+        <h2>Pages</h2>
         <div class="ui-panel-inner">
             <ul data-role="listview">
                 <li data-icon="home">
-                    <a id="homeAction" href="#homePage">HomePage</a>
+                    <a id="homeAction" href="#homePage">Upcoming Events</a>
+                </li>
+                <li data-icon="calendar">
+                    <a id="homeAction" href="#calendarPage">Calendar</a>
+                </li>
+                 <li data-icon="gear">
+                    <a id="homeAction" href="#accountPage">Account</a>
                 </li>
             </ul>
         </div>
