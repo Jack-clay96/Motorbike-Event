@@ -1,4 +1,6 @@
-Backendless.initApp("BEC3A11B-2A08-4B8F-FF29-4F33380A3900","3C8378C2-F2B4-F4C9-FFCE-F0C165EBFB00");
+/*Backendless: https://backendless.com/docs/js/doc.html#welcome*/
+
+Backendless.initApp("BEC3A11B-2A08-4B8F-FF29-4F33380A3900","3C8378C2-F2B4-F4C9-FFCE-F0C165EBFB00"); //AppID then JS API key
 document.addEventListener("deviceready", onDeviceReady, false);
 
 
@@ -22,12 +24,6 @@ document.addEventListener("deviceready", onDeviceReady, false);
             location.href="#homePage";
         }
  
-        function gotError( err ) // see more on error handling
-        {
-            console.log( "error message - " + err.message );
-            console.log( "error code - " + err.statusCode );
-        }
- 
         console.log( username + ", " + password );
          Backendless.UserService.login( username, password, true )
             .then( userLoggedIn )
@@ -47,12 +43,6 @@ document.addEventListener("deviceready", onDeviceReady, false);
             location.href="#loginPage";
         }
  
-        function gotError( err ) // see more on error handling
-        {
-            console.log( "error message - " + err.message );
-            console.log( "error code - " + err.statusCode );
-        }
- 
         var user = new Backendless.User();
         user.email = email;
         user.name = name;
@@ -61,6 +51,26 @@ document.addEventListener("deviceready", onDeviceReady, false);
         Backendless.UserService.register( user ).then( userRegistered ).catch( gotError );
         
     });
+        
+        
+        /* Forgot PWD Page */
+        $("#ForgpassBut").click(function(){
+            console.log("forgot password button clicked");
+            var emailRestPwd= $("#emailPass").val(); //user email here
+            
+            function passwordRecoverySent()
+            {
+                console.log( "an email with a link to restore password has been sent to the user" );
+                location.href="#loginPage";
+            }
+
+             Backendless.UserService.restorePassword(emailRestPwd)
+            .then( passwordRecoverySent )
+            .catch( gotError );
+            
+        });
+        
+        
         /* Home Page */
         
         //Logout Button
@@ -72,12 +82,6 @@ document.addEventListener("deviceready", onDeviceReady, false);
             console.log( "user has been logged out" );
             location.href="#loginPage";
         }
- 
-        function gotError( err ) // see more on error handling
-        {
-            console.log( "error message - " + err.message );
-            console.log( "error code - " + err.statusCode );
-        }
 
             Backendless.UserService.logout()
             .then( userLoggedOut )
@@ -86,3 +90,10 @@ document.addEventListener("deviceready", onDeviceReady, false);
         
         
 }
+
+       function gotError( err ) // see more on error handling
+        {
+            console.log( "error message - " + err.message );
+            console.log( "error code - " + err.statusCode );
+        }
+
