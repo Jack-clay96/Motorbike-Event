@@ -55,27 +55,30 @@
 <!-- Home Page -->
     <div data-role="page" id="homePage" class = "homeBG">
     <button id="logout" class="logout">Logout</button> <br> <br> 
-        
+                <a href="#myPanel" class="ui-btn ui-shadow ui-corner-all ui-icon-bars ui-btn-icon-notext"></a> <!-- background needs removing -->
   	<div role="main" class="loginForm">
         <h1 class="homepageh">Motorbike-Event</h1>
-        
         <div class ="ui-content">
         <input class="clear" type="text" id="username" placeholder="Search"/> <!--Something from Ionic better?-->
             
-        <!-- Create list of motorbike events // Also need GPRS location. Need to create navigation action bar.-->
-            <a href="#myPanel1" class="ui-btn ui-btn-inline">Open Panel</a>
-            <div data-role="panel" id="myPanel1">
-                <h2>See pages</h2>
-                <a href="#pagetwo" class="panelbtn">Go to Page two</a>
-                <a href="#pagethree" class="panelbtn">Go to Page three</a>
-            </div>
-            
-            
+        <!-- Create list of motorbike events // Also need GPRS location.-->
         </div>
     </div>
         
 </div>
-    
+ 
+    <!-- Panel / Action bar -->
+    <div data-role="panel" id="myPanel" data-position="left" data-display="overlay" data-theme="a">
+        <h2>See pages</h2>
+        <div class="ui-panel-inner">
+            <ul data-role="listview">
+                <li data-icon="home">
+                    <a id="homeAction" href="#homePage">HomePage</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+            
     
 </body>
 </html>

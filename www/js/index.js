@@ -72,7 +72,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
         
         
         /* Home Page */
-        
+    $('#myPanel').enhanceWithin().panel(); //Initialise my panel
         //Logout Button
     $( "#logout" ).click(function() {
             console.log("logout button clicked");
