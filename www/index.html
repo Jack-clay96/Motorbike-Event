@@ -14,14 +14,14 @@
     
 <body onload="onDeviceReady()"> <!-- Need to DELETE onload. Only used for testing -->
 
-<div data-role="page" id="loginPage" class = "BG">
+<!--<div data-role="page" id="loginPage" class = "BG">
         
   	<div role="main" class="ui-content">
         
         <h1>Motorbike-Event</h1>
         
         <!--Login Form -->
-       <div class ="loginForm">
+     <!--  <div class ="loginForm">
              <input class ="loginField" type="text" id="email" placeholder="Email"/>
              <input type="password" id="password" placeholder="Password"/> <br>
              <button class="loginButton" id="submit" type="submit">Login</button>
@@ -32,23 +32,23 @@
 </div>
     
 <!--Registration Page -->
-<div data-role="page" id="regPage" class = "">
+<!--<div data-role="page" id="regPage" class = "">
     <div role="main" class="ui-content">
         <h1 class="header">Sign up!</h1>
         <input class ="loginField" type="text" id="emailReg" placeholder="Email"/>
         <input class ="loginField" type="text" id="nameReg" placeholder ="Full Name" />
         <input class ="loginField" type="password" id="passwordReg" placeholder ="Password" />
         <button id="register" class="">Confirm</button> <!-- need notification for account created / confirmation message? -->
-    </div>
+   <!-- </div>
 </div>
     
 <!--Forgot-password Page -->
-<div data-role="page" id="forgpassPage" class = "">
+<!--<div data-role="page" id="forgpassPage" class = "">
     <div role="main" class="ui-content">
         <h1 class="header">Forgot Password?</h1>
         <input class ="loginField" type="text" id="emailPass" placeholder="Email"/>
         <button href="#loginPage" id="ForgpassBut" class="">Confirm</button> <!-- Send email with password? Look at backendless help for it -->
-    </div>
+   <!-- </div>
 </div>
     
     
@@ -56,10 +56,22 @@
     <div data-role="page" id="homePage" class = "homeBG">
     <button id="logout" class="logout">Logout</button> <br> <br> 
         
-  	<div role="main" class="ui-content">
-        <h1>Motorbike-Event</h1>
-        <input type="text" id="username" placeholder="Search"/> <!--Something from Ionic better?-->
-        <!-- Create list of motorbike events // Also need GPRS location-->
+  	<div role="main" class="loginForm">
+        <h1 class="homepageh">Motorbike-Event</h1>
+        
+        <div class ="ui-content">
+        <input class="clear" type="text" id="username" placeholder="Search"/> <!--Something from Ionic better?-->
+            
+        <!-- Create list of motorbike events // Also need GPRS location. Need to create navigation action bar.-->
+            <a href="#myPanel1" class="ui-btn ui-btn-inline">Open Panel</a>
+            <div data-role="panel" id="myPanel1">
+                <h2>See pages</h2>
+                <a href="#pagetwo" class="panelbtn">Go to Page two</a>
+                <a href="#pagethree" class="panelbtn">Go to Page three</a>
+            </div>
+            
+            
+        </div>
     </div>
         
 </div>

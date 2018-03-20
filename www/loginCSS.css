@@ -1,3 +1,7 @@
+.clear{
+    float: clear;
+}
+
 body{
     font-family: verdana, Arial !important;
     text-shadow: 0px 0px transparent !important;
@@ -8,10 +12,6 @@ body{
     /* Author: Photogeider Nov 9 2016. Retrieved from: https://pixabay.com/en/motocross-love-sport-sunset-kiss-1801385/ */
     background-size:cover;
     background-repeat: no-repeat;
-}
-
-.homeBG{
-    background-color: white !important;
 }
 
 h1{
@@ -45,6 +45,16 @@ h1{
 
 /* Home Page */
 
+.homeBG{
+    background-color: lightsteelblue!important;
+}
+
+.content{
+    max-width: 300px !important;
+    margin:auto;
+    display:block;
+}
+
 .logout{
     width: 150px !important;
     height: 40px !important;
@@ -68,5 +78,22 @@ h1{
 .header{
     text-align: center;
     color: black;
+}
+
+.homepageh{
+    font-size: 20px;
+}
+
+.panelbtn{
+      width: 150px !important;
+    height: 40px !important;
+    background-color: transparent !important; 
+    color: deepskyblue !important;
+    text-shadow: 0px 0px deepskyblue !important;
+    border: transparent !important;
+    font-family: verdana, Arial !important;
+    margin:auto;
+    display:block;
+    box-shadow: 0px 0px !important;
 }
 
