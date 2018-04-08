@@ -3,7 +3,7 @@
 Backendless.initApp("BEC3A11B-2A08-4B8F-FF29-4F33380A3900","3C8378C2-F2B4-F4C9-FFCE-F0C165EBFB00"); //AppID then JS API key
 document.addEventListener("deviceready", onDeviceReady, false);
 
-
+var feedURL = "https://www.metaweather.com/api/location/44418/"; //WEATHER API
 
 // device APIs are available
 //
@@ -15,8 +15,8 @@ document.addEventListener("deviceready", onDeviceReady, false);
         
         console.log("button clicked")
          
-        var username = $('#email').val();
-        var password = $('#password').val();
+        var username = $("#email").val();
+        var password = $("#password").val();
         
         function userLoggedIn( user )
         {
@@ -87,6 +87,24 @@ document.addEventListener("deviceready", onDeviceReady, false);
             .then( userLoggedOut )
             .catch( gotError );
     });
+        
+    /*API SETUP */
+    // Use an HTML GET request to obtain data from an API
+var xmlhttp=new XMLHttpRequest();
+xmlhttp.onreadystatechange = function() {
+if (this.readyState == 4 && this.status == 200) {
+    var weather= JSON.parse(xmlhttp.responseText);
+    //Define Ractive binding
+    var ractive = new Ractive({
+    el: 'container',
+    template: '#myTemplate',
+    data: { weather : weather.consolidated_weather }
+    });
+    }
+          
+};      
+    xmlhttp.open("GET", feedURL, true); //Allows user to use app while getting request back
+	xmlhttp.send();   
         
         
 }
