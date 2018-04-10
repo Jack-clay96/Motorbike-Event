@@ -104,6 +104,17 @@ h1{
     height: 100%;
 }
 
+/*Calendar*/
+#content {
+    height: 100%;
+    width: 90%;
+    margin-top: 50%;
+    margin-left: 5%;
+}
+#calendarPage{
+    height: 100%;
+}
+
 .panelbtn{
       width: 150px !important;
     height: 40px !important;
