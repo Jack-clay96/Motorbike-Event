@@ -103,7 +103,7 @@ $(document).on("pageshow","#homePage", onPageShow);
     function processResults(Events) {
     $("#EventList").empty();
         
-    for (var i = 0; i<EventsEvents.length; i++)
+    for (var i = 0; i<Events.length; i++)
         {
             //display the first task in an array of tasks. alert(tasks[2].Task)
             $("#EventList").append("<li>"+Events[i].eventName+"</li>");
