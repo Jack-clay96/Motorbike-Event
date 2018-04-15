@@ -5,8 +5,7 @@ Backendless.initApp("BEC3A11B-2A08-4B8F-FF29-4F33380A3900","3C8378C2-F2B4-F4C9-F
 var dataQueryBuilder = Backendless.DataQueryBuilder.create()
 dataQueryBuilder.setSortBy( ["created"] );
 document.addEventListener("deviceready", onDeviceReady, false);
-
-$(document).on("pageshow","#homePage", onPageShow);
+$(document).on("pageshow","#homePage", onPageShow); //When home page shows
 
 // device APIs are available
 //
@@ -106,7 +105,7 @@ $(document).on("pageshow","#homePage", onPageShow);
     for (var i = 0; i<Events.length; i++)
         {
             //display the first task in an array of tasks. alert(tasks[2].Task)
-            $("#EventList").append("<li>"+Events[i].eventName+"</li>");
+            $("#EventList").append("<li>"+Events[i].eventName+"</li>"); //#EventList where to show list in html. Events[i] is database. eventName is attribute
         }
             
             //refresh the listview
