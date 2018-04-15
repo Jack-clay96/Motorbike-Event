@@ -105,7 +105,7 @@ $(document).on("pageshow","#homePage", onPageShow); //When home page shows
     for (var i = 0; i<Events.length; i++)
         {
             //display the first task in an array of tasks. alert(tasks[2].Task)
-            $("#EventList").append("<li>"+Events[i].eventName+"</li>"); //#EventList where to show list in html. Events[i] is database. eventName is attribute
+            $("#EventList").append("<li>"+Events[i].eventName+"<br>"+"miles away frrom user"+"</li>"); //#EventList where to show list in html. Events[i] is database. eventName is attribute
         }
             
             //refresh the listview
