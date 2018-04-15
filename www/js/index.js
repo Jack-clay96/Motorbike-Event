@@ -6,7 +6,7 @@ var dataQueryBuilder = Backendless.DataQueryBuilder.create()
 dataQueryBuilder.setSortBy( ["created"] );
 document.addEventListener("deviceready", onDeviceReady, false);
 
-$(document).on("pageshow","#todopage", onPageShow);
+$(document).on("pageshow","#homePage", onPageShow);
 
 // device APIs are available
 //
