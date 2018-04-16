@@ -92,17 +92,17 @@ document.addEventListener("deviceready", onDeviceReady, false);
             .catch( gotError );
     });
         
-    $("#EventButton").click(function(){
-        console.log("Event button clicked");
-        location.href="#eventMapPage";
-    });
-        
 }
 
 /* Home Page */
  function onPageShow() {
 	console.log("page shown");
-    Backendless.Data.of("Events").find(dataQueryBuilder).then(processResults).catch(error); // find (...) is used here to order the list by created. 
+    Backendless.Data.of("Events").find(dataQueryBuilder).then(processResults).catch(error); // find (...) is used here to order the list by created.
+     
+         $("#EventButton").click(function(){ //not working - NEED TO PUT SOMEWHERE ELSE I THINK
+            console.log("Event button clicked");
+            location.href="#eventMapPage";
+        });
     }
         
     //LISTING THE DATABASE
