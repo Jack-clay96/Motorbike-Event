@@ -90,7 +90,12 @@ var idEvent = "EventButton";
             Backendless.UserService.logout()
             .then( userLoggedOut )
             .catch( gotError );
-    });   
+    });
+        
+    $("#EventButton").click(function(){
+        console.log("Event button clicked");
+        location.href="#eventMapPage";
+    });
         
 }
 
@@ -115,10 +120,6 @@ var idEvent = "EventButton";
 
     }
 
-    $("#EventButton").click(function(){
-        console.log("Event button clicked");
-        location.href="#eventMapPage";
-    });
 
 /* Errors */
         function error(err) {
