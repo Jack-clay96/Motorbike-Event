@@ -2,12 +2,12 @@
 
 Backendless.initApp("BEC3A11B-2A08-4B8F-FF29-4F33380A3900","3C8378C2-F2B4-F4C9-FFCE-F0C165EBFB00"); //AppID then JS API key
 
+var idEvent = "EventButton";
+
 var dataQueryBuilder = Backendless.DataQueryBuilder.create()
 dataQueryBuilder.setSortBy( ["created"] );
-document.addEventListener("deviceready", onDeviceReady, false);
 $(document).on("pageshow","#homePage", onPageShow); //When home page shows
-
-var idEvent = "EventButton";
+document.addEventListener("deviceready", onDeviceReady, false);
 
 // device APIs are available
 //
