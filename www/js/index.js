@@ -105,23 +105,23 @@ $(document).on("pageshow","#homePage", onPageShow); //When home page shows
     for (var i = 0; i<Events.length; i++)
         {
             //display the first task in an array of tasks. alert(tasks[2].Task)
-            $("#EventList").append("<li><a>"+Events[i].eventName+"<br>"+"miles away frrom user"+"<a></li>"); //#EventList where to show list in html. Events[i] is database. eventName is attribute
+            $("#EventList").append("<li><a id= 'EventButton'>" +Events[i].eventName+"<br>"+"miles away frrom user"+"<a></li>"); //#EventList where to show list in html. Events[i] is database. eventName is attribute
         }
             
             //refresh the listview
             $("#EventList").listview("refresh");
 
     }
-    function error(err) {
-    alert(err);
-    }
 
-function saved(savedTask) {
-console.log( "new Contact instance has been saved" + savedTask);
-}
+    $("#EventButton").click(function(){
+        console.log("Event button clicked");
+        location.href="#eventMapPage";
+    });
 
-
-/* All */
+/* Errors */
+        function error(err) {
+            alert(err);
+        }
        function gotError( err ) // see more on error handling
         {
             console.log( "error message - " + err.message );
