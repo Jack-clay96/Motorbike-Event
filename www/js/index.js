@@ -7,6 +7,8 @@ dataQueryBuilder.setSortBy( ["created"] );
 document.addEventListener("deviceready", onDeviceReady, false);
 $(document).on("pageshow","#homePage", onPageShow); //When home page shows
 
+var idEvent = "EventButton";
+
 // device APIs are available
 //
     function onDeviceReady() {
@@ -105,7 +107,7 @@ $(document).on("pageshow","#homePage", onPageShow); //When home page shows
     for (var i = 0; i<Events.length; i++)
         {
             //display the first task in an array of tasks. alert(tasks[2].Task)
-            $("#EventList").append("<li><a id=" "EventButton" ">" +Events[i].eventName+"<br>"+"miles away frrom user"+"<a></li>"); //#EventList where to show list in html. Events[i] is database. eventName is attribute
+            $("#EventList").append("<li><a id=" + idEvent + ">" +Events[i].eventName+"<br>"+"miles away frrom user"+"<a></li>"); //#EventList where to show list in html. Events[i] is database. eventName is attribute
         }
             
             //refresh the listview
