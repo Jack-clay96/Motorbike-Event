@@ -2,8 +2,16 @@
 
 Backendless.initApp("BEC3A11B-2A08-4B8F-FF29-4F33380A3900","3C8378C2-F2B4-F4C9-FFCE-F0C165EBFB00"); //AppID then JS API key
 
-var idEvent = "EventButton";
+//Location
+var watchID;
+var locationOptions = { 
+	maximumAge: 10000, 
+	timeout: 6000, 
+	enableHighAccuracy: true 
+};
 
+//Event list
+var idEvent = "EventButton";
 var dataQueryBuilder = Backendless.DataQueryBuilder.create()
 dataQueryBuilder.setSortBy( ["created"] );
 $(document).on("pageshow","#homePage", onPageShow); //When home page shows
@@ -99,10 +107,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 	console.log("page shown");
     Backendless.Data.of("Events").find(dataQueryBuilder).then(processResults).catch(error); // find (...) is used here to order the list by created.
      
-         $("#EventButton").click(function(){ //not working - NEED TO PUT SOMEWHERE ELSE I THINK
-            console.log("Event button clicked");
-            location.href="#eventMapPage";
-        });
+    
     }
         
     //LISTING THE DATABASE
@@ -112,14 +117,37 @@ document.addEventListener("deviceready", onDeviceReady, false);
     for (var i = 0; i<Events.length; i++)
         {
             //display the first task in an array of tasks. alert(tasks[2].Task)
-            $("#EventList").append("<li><a id=" + idEvent + ">" +Events[i].eventName+"<br>"+"miles away frrom user"+"<a></li>"); //#EventList where to show list in html. Events[i] is database. eventName is attribute
+            $("#EventList").append("<li><a class=" + idEvent + ">" +Events[i].eventName+"<br>"+"miles away frrom user"+"<a></li>"); //#EventList where to show list in html. Events[i] is database. eventName is attribute
         }
             
-            //refresh the listview
-            $("#EventList").listview("refresh");
+        //refresh the listview
+        $("#EventList").listview("refresh");
+        
+        
+         $(".EventButton").click(function(){ //not working - NEED TO PUT SOMEWHERE ELSE I THINK
+            console.log("Event button clicked");
+            location.href="#eventMapPage";
+        });
+        
 
     }
 
+/* Location */
+//Call this function when you want to watch for chnages in position
+    function updatePosition() {
+	//change time box to show updated message
+	   $('#time').val("Getting data...");
+	//instruct location service to get position with appropriate callbacks
+	   watchID = navigator.geolocation.watchPosition(successPosition, failPosition, locationOptions);
+}
+
+    //Call this function when you want to watch for chnages in position
+    function stopPosition() {
+	//change time box to show updated message
+	   $('#time').val("Press the button to get location data");
+	   //instruct location service to get position with appropriate callbacks
+	   navigator.geolocation.clearWatch(watchID);
+}
 
 /* Errors */
         function error(err) {
@@ -130,4 +158,5 @@ document.addEventListener("deviceready", onDeviceReady, false);
             console.log( "error message - " + err.message );
             console.log( "error code - " + err.statusCode );
         }
+
 
