@@ -22,7 +22,6 @@ $(document).on('pageinit', function() {
 	
 	//set up listener for button clicks
 	updatePosition();
-    //stopPosition(); //MOVE THIS TO WHEN USER CLICKS ON EVENT.
 });
 
 // device APIs are available
@@ -113,7 +112,7 @@ $(document).on('pageinit', function() {
 /* Home Page */
  function onPageShow() {
 	console.log("page shown");
-    Backendless.Data.of("Events").find(dataQueryBuilder).then(processResults).catch(thiserror); // find (...) is used here to order the list by created.
+    Backendless.Data.of("Events").find(dataQueryBuilder).then(processResults).catch(error); // find (...) is used here to order the list by created.
     
     }
         
@@ -146,7 +145,7 @@ $(document).on('pageinit', function() {
 //Call this function when you want to watch for chnages in position
     function updatePosition() {
 	//instruct location service to get position with appropriate callbacks
-	   watchID = navigator.geolocation.watchPosition(successPosition, thiserror, locationOptions);
+	   watchID = navigator.geolocation.watchPosition(successPosition, error, locationOptions);
 }
 
     //Call this function when you want to watch for chnages in position
@@ -157,23 +156,20 @@ $(document).on('pageinit', function() {
 
 //called when the position is successfully determined
 function successPosition(position) {
-	
-	//You can find out more details about what the position obejct contains here:
-	// http://www.w3schools.com/html/html5_geolocation.asp
-	
-
-	//lets get some stuff out of the position object
+    
+	//Get stuff out of the position object
 	var latitude = position.coords.latitude;
 	var longitude = position.coords.longitude;
     
-	//update the display with the correct value
+	//Update the display with the correct values
 	$('#lattext').val(latitude);
 	$('#longtext').val(longitude);
+    stopPosition();
 	
 }
 
 /* Errors */
-        function thiserror(err) {
+        function error(err) {
             alert(err);
         }
        function gotError( err ) // see more on error handling
