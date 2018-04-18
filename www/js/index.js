@@ -22,7 +22,7 @@ $(document).on('pageinit', function() {
 	
 	//set up listener for button clicks
 	updatePosition();
-	stopPosition();
+    //stopPosition(); //MOVE THIS TO WHEN USER CLICKS ON EVENT
 });
 
 // device APIs are available
@@ -114,7 +114,6 @@ $(document).on('pageinit', function() {
  function onPageShow() {
 	console.log("page shown");
     Backendless.Data.of("Events").find(dataQueryBuilder).then(processResults).catch(error); // find (...) is used here to order the list by created.
-     
     
     }
         
@@ -147,7 +146,7 @@ $(document).on('pageinit', function() {
 //Call this function when you want to watch for chnages in position
     function updatePosition() {
 	//instruct location service to get position with appropriate callbacks
-	   watchID = navigator.geolocation.watchPosition(successPosition, failPosition, locationOptions);
+	   watchID = navigator.geolocation.watchPosition(successPosition, error, locationOptions);
 }
 
     //Call this function when you want to watch for chnages in position
@@ -156,6 +155,28 @@ $(document).on('pageinit', function() {
 	   $('#time').val("Press the button to get location data");
 	   //instruct location service to get position with appropriate callbacks
 	   navigator.geolocation.clearWatch(watchID);
+}
+
+//called when the position is successfully determined
+function successPosition(position) {
+	
+	//You can find out more details about what the position obejct contains here:
+	// http://www.w3schools.com/html/html5_geolocation.asp
+	
+
+	//lets get some stuff out of the position object
+	var time = position.timestamp;
+	var latitude = position.coords.latitude;
+	var longitude = position.coords.longitude;
+	
+    var unixtime = new Date(position.timestamp);
+    time = unixtime.toTimeString();
+    
+	//OK. Now we want to update the display with the correct values
+	$('#time').val("Recieved data at " + time);
+	$('#lattext').val(latitude);
+	$('#longtext').val(longitude);
+	
 }
 
 /* Errors */
