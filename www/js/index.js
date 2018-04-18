@@ -17,6 +17,14 @@ dataQueryBuilder.setSortBy( ["created"] );
 $(document).on("pageshow","#homePage", onPageShow); //When home page shows
 document.addEventListener("deviceready", onDeviceReady, false);
 
+//Locattion
+$(document).on('pageinit', function() {
+	
+	//set up listener for button clicks
+	updatePosition();
+	stopPosition();
+});
+
 // device APIs are available
 //
     function onDeviceReady() {
@@ -124,7 +132,10 @@ document.addEventListener("deviceready", onDeviceReady, false);
         $("#EventList").listview("refresh");
         
         
-         $(".EventButton").click(function(){ //not working - NEED TO PUT SOMEWHERE ELSE I THINK
+         $(".EventButton").click(function(){ 
+             
+             console.log(this.innerHTML);
+             
             console.log("Event button clicked");
             location.href="#eventMapPage";
         });
@@ -135,8 +146,6 @@ document.addEventListener("deviceready", onDeviceReady, false);
 /* Location */
 //Call this function when you want to watch for chnages in position
     function updatePosition() {
-	//change time box to show updated message
-	   $('#time').val("Getting data...");
 	//instruct location service to get position with appropriate callbacks
 	   watchID = navigator.geolocation.watchPosition(successPosition, failPosition, locationOptions);
 }
