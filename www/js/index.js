@@ -21,7 +21,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 $(document).on('pageinit', function() {
 	
 	//set up listener for button clicks
-	updatePosition();
+	
     //stopPosition(); //MOVE THIS TO WHEN USER CLICKS ON EVENT.
 });
 
@@ -151,8 +151,6 @@ $(document).on('pageinit', function() {
 
     //Call this function when you want to watch for chnages in position
     function stopPosition() {
-	//change time box to show updated message
-	   $('#time').val("Press the button to get location data");
 	   //instruct location service to get position with appropriate callbacks
 	   navigator.geolocation.clearWatch(watchID);
 }
@@ -165,15 +163,10 @@ function successPosition(position) {
 	
 
 	//lets get some stuff out of the position object
-	var time = position.timestamp;
 	var latitude = position.coords.latitude;
 	var longitude = position.coords.longitude;
-	
-    var unixtime = new Date(position.timestamp);
-    time = unixtime.toTimeString();
     
-	//OK. Now we want to update the display with the correct values
-	$('#time').val("Recieved data at " + time);
+	//update the display with the correct value
 	$('#lattext').val(latitude);
 	$('#longtext').val(longitude);
 	
@@ -182,6 +175,7 @@ function successPosition(position) {
 /* Errors */
         function error(err) {
             alert(err);
+            navigator.geolocation.clearWatch(watchID);
         }
        function gotError( err ) // see more on error handling
         {
