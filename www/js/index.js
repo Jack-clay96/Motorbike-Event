@@ -21,7 +21,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 $(document).on('pageinit', function() {
 	
 	//set up listener for button clicks
-	
+	updatePosition();
     //stopPosition(); //MOVE THIS TO WHEN USER CLICKS ON EVENT.
 });
 
@@ -113,7 +113,7 @@ $(document).on('pageinit', function() {
 /* Home Page */
  function onPageShow() {
 	console.log("page shown");
-    Backendless.Data.of("Events").find(dataQueryBuilder).then(processResults).catch(error); // find (...) is used here to order the list by created.
+    Backendless.Data.of("Events").find(dataQueryBuilder).then(processResults).catch(thiserror); // find (...) is used here to order the list by created.
     
     }
         
@@ -146,7 +146,7 @@ $(document).on('pageinit', function() {
 //Call this function when you want to watch for chnages in position
     function updatePosition() {
 	//instruct location service to get position with appropriate callbacks
-	   watchID = navigator.geolocation.watchPosition(successPosition, error, locationOptions);
+	   watchID = navigator.geolocation.watchPosition(successPosition, thiserror, locationOptions);
 }
 
     //Call this function when you want to watch for chnages in position
@@ -173,9 +173,8 @@ function successPosition(position) {
 }
 
 /* Errors */
-        function error(err) {
+        function thiserror(err) {
             alert(err);
-            navigator.geolocation.clearWatch(watchID);
         }
        function gotError( err ) // see more on error handling
         {
