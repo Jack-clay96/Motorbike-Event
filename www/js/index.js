@@ -22,7 +22,7 @@ $(document).on('pageinit', function() {
 	
 	//set up listener for button clicks
 	updatePosition();
-    //stopPosition(); //MOVE THIS TO WHEN USER CLICKS ON EVENT
+    //stopPosition(); //MOVE THIS TO WHEN USER CLICKS ON EVENT.
 });
 
 // device APIs are available
