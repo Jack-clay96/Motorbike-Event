@@ -4,6 +4,8 @@ Backendless.initApp("BEC3A11B-2A08-4B8F-FF29-4F33380A3900","3C8378C2-F2B4-F4C9-F
 
 //Location
 var watchID;
+var long;
+var lat;
 var locationOptions = { 
 	maximumAge: 10000, 
 	timeout: 6000, 
@@ -124,6 +126,8 @@ $(document).on('pageinit', function() {
         {
             //display the first task in an array of tasks. alert(tasks[2].Task)
             $("#EventList").append("<li><a class=" + idEvent + ">" +Events[i].eventName+"<br>"+"miles away frrom user"+"<a></li>"); //#EventList where to show list in html. Events[i] is database. eventName is attribute
+            console.log("User lat: " + lat); //This needs to be tested on phone
+            console.log(long);
         }
             
         //refresh the listview
@@ -142,13 +146,13 @@ $(document).on('pageinit', function() {
     }
 
 /* Location */
-//Call this function when you want to watch for chnages in position
+//Call this function when you want to watch for changes in position
     function updatePosition() {
 	//instruct location service to get position with appropriate callbacks
-	   watchID = navigator.geolocation.watchPosition(successPosition, error, locationOptions);
+	   watchID = navigator.geolocation.watchPosition(successPosition, failPosition, locationOptions);
 }
 
-    //Call this function when you want to watch for chnages in position
+    //Call this function when you want to stop watching for changes in position
     function stopPosition() {
 	   //instruct location service to get position with appropriate callbacks
 	   navigator.geolocation.clearWatch(watchID);
@@ -163,8 +167,16 @@ function successPosition(position) {
     
 	//Update the display with the correct values
 	$('#lattext').val(latitude);
+    lat = latitude;
 	$('#longtext').val(longitude);
+    long = longitude;
     stopPosition();
+	
+}
+
+function failPosition(error) {
+	//change time box to show updated message
+	console.log("Location issue: " + error);
 	
 }
 
