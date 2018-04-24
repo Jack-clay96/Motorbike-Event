@@ -156,15 +156,21 @@ $(document).on('pageinit', function() {
 
     }
 
-/* Location */
-    navigator.geolocation.activator.askActivation(function(response) {
-    //Success callback 
-    }, function(response) {
-    //Failure callback 
-    });
+
 
 //Call this function when you want to watch for changes in position
     function updatePosition() {
+        
+        /* Location */
+    navigator.geolocation.activator.askActivation(function(response) {
+    //Success callback 
+        console.log("Success: " + response);
+        
+    }, function(response) {
+        
+    //Failure callback 
+                console.log("Failure: " + response);
+    });
 	//instruct location service to get position with appropriate callbacks
 	   watchID = navigator.geolocation.watchPosition(successPosition, failPosition, locationOptions);
 }
