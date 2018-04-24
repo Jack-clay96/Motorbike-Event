@@ -128,6 +128,17 @@
     center: {lat: 52.5301384, lng: -2.023884},
     zoom: 10
     });
+        
+    var marker = new google.maps.Marker({
+            position: {lat: "#strtEventLat", lng: "#strtEventLong"},
+            map: map,
+            title: "Start Event pin" 
+            });
+    var marker = new google.maps.Marker({
+            position: {lat: "#endEventLat", lng: "#endEventLong"},
+            map: map,
+            title: "End Event pin" 
+            });
 }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIE4T2qBcQEqVA2mosCHC3DQ9gVyu5YQA&callback=initMap"

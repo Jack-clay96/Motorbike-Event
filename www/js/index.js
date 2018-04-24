@@ -19,7 +19,7 @@ dataQueryBuilder.setSortBy( ["created"] );
 $(document).on("pageshow","#homePage", onPageShow); //When home page shows
 document.addEventListener("deviceready", onDeviceReady, false);
 
-//Locattion
+//Location
 $(document).on('pageinit', function() {
 	
 	//set up listener for button clicks
@@ -164,7 +164,6 @@ function successPosition(position) {
 	//Get stuff out of the position object
 	var latitude = position.coords.latitude;
 	var longitude = position.coords.longitude;
-    
 	//Update the display with the correct values
 	$('#lattext').val(latitude);
     lat = latitude;
