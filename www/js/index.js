@@ -109,6 +109,17 @@ $(document).on('pageinit', function() {
             .catch( gotError );
     });
         
+    /*Location permission*/
+    navigator.geolocation.activator.askActivation(function(response) {
+    //Success callback 
+        console.log("Success: " + response);
+        
+    }, function(response) {
+        
+    //Failure callback 
+                console.log("Failure: " + response);
+    });
+        
 }
 
 /* Home Page */
@@ -162,15 +173,6 @@ $(document).on('pageinit', function() {
     function updatePosition() {
         
         /* Location */
-    navigator.geolocation.activator.askActivation(function(response) {
-    //Success callback 
-        console.log("Success: " + response);
-        
-    }, function(response) {
-        
-    //Failure callback 
-                console.log("Failure: " + response);
-    });
 	//instruct location service to get position with appropriate callbacks
 	   watchID = navigator.geolocation.watchPosition(successPosition, failPosition, locationOptions);
 }
