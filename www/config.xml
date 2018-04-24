@@ -23,4 +23,7 @@ ID is seen by phone - same name might cause issue-->
 	
 	<access origin="*"/>
    	<plugin name="cordova-plugin-whitelist" version="1" />
+    <plugin name="cordova-plugin-geolocation"  />
+    <!--Android 6.0 or newer: Asks for permissions--> 
+    <plugin name="cordova-plugin-geolocation-android-activator" />
 </widget>
