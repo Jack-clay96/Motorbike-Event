@@ -120,14 +120,15 @@ $(document).on('pageinit', function() {
         
     //LISTING THE DATABASE
     function processResults(Events) {
+        
+  
+        
     $("#EventList").empty();
         
     for (var i = 0; i<Events.length; i++)
         {
             //display the first task in an array of tasks. alert(tasks[2].Task)
-            $("#EventList").append("<li><a class=" + idEvent + ">" +Events[i].eventName+"<br>"+"miles away frrom user"+"<a></li>"); //#EventList where to show list in html. Events[i] is database. eventName is attribute
-            console.log("User lat: " + lat); //This needs to be tested on phone
-            console.log(long);
+            $("#EventList").append("<li><a class=" + idEvent + " id=" + Events[i].objectId  + " >" +Events[i].eventName+"<br>"+"miles away frrom user"+"</a></li>"); //#EventList where to show list in html. Events[i] is database. eventName is attribute
         }
             
         //refresh the listview
@@ -136,7 +137,17 @@ $(document).on('pageinit', function() {
         
          $(".EventButton").click(function(){ 
              
-             console.log(this.innerHTML);
+             console.log(this.id);
+             
+             //query backendless for events matching this event name. FOR GETTING DATA SPECIFIC FOR EVENT
+             Backendless.Data.of( "Events" ).findById( this.id )
+            .then( function( result ) {
+            //data about event here
+            $("strtEventLat").append(this.id.startLat);
+            })
+            .catch( function( error ) {
+            });
+             
              
             console.log("Event button clicked");
             location.href="#eventMapPage";
@@ -146,6 +157,12 @@ $(document).on('pageinit', function() {
     }
 
 /* Location */
+    navigator.geolocation.activator.askActivation(function(response) {
+    //Success callback 
+    }, function(response) {
+    //Failure callback 
+    });
+
 //Call this function when you want to watch for changes in position
     function updatePosition() {
 	//instruct location service to get position with appropriate callbacks
