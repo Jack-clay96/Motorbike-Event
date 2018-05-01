@@ -144,11 +144,11 @@ $(document).on('pageinit', function() {
         $("#EventList").listview("refresh");
         
         $(".EventButton").click(function(){ 
-            console.log(EventList.length);
+            console.log(Events.length);
         
             var arrayId = this.id;
             console.log("This is arrayID: " + arrayId);
-            console.log(EventList[arrayId].eventName); 
+            console.log(Events[arrayId].eventName); 
             $("#strtEventLat").append(Events[arrayId].startLat);
             $("#strtEventLong").append(Events[arrayId].startLong);
             $("#endEventLat").append(Events[arrayId].endLat);
