@@ -161,7 +161,7 @@ $(document).on('pageinit', function() {
             //$("#endEventLat").append(Events[arrayId].endLat);
             //$("#endEventLong").append(Events[arrayId].endLong);
             
-            initmap(Events[arrayId].startLat, Events[arrayId].startLong, Events[arrayId].endLat, Events[arrayId].endLong);
+            initMap(Events[arrayId].startLat, Events[arrayId].startLong, Events[arrayId].endLat, Events[arrayId].endLong);
             
             console.log("Event button clicked");
             location.href="#eventMapPage";
