@@ -7,6 +7,11 @@ body{
     text-shadow: 0px 0px transparent !important;
 }
 
+p{
+    text-align: center;
+    color: white;
+}
+
 .BG{
     background-image: url(Images/loginBG.jpg);
     /* Author: Photogeider Nov 9 2016. Retrieved from: https://pixabay.com/en/motocross-love-sport-sunset-kiss-1801385/ */

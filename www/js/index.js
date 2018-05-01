@@ -221,20 +221,26 @@ function failPosition(error) {
 
  function initMap(startLat, startLong, endLat, endLong) {
     // Create a map object and specify the DOM element for display.
-    var myLatlng = new google.maps.LatLng(parseFloat(startLat),parseFloat(startLong));
+    //var myLatlng = new google.maps.LatLng(parseFloat(startLat),parseFloat(startLong));
+      console.log("Error generates here? - 1");
+    
     var map = new google.maps.Map(document.getElementById("map"), {
     center: {lat: startLat, lng: startLong},
     zoom: 10
     });
         
-    var marker = new google.maps.Marker({
+      console.log("Error generates here? - 2");
+    var marker1 = new google.maps.Marker({
             position: {lat: startLat, lng: startLong},
             map: map,
             title: "Start Event Location" 
             });
-    var marker = new google.maps.Marker({
+     
+     console.log("Error generates here? - 3");
+    var marker2 = new google.maps.Marker({
             position: {lat: endLat, lng: endLong},
             map: map,
             title: "End Event Location" 
             });
+     console.log("Error generates here? - 4");
 }
