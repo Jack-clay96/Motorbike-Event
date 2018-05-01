@@ -151,19 +151,14 @@ $(document).on('pageinit', function() {
             
             console.log(Events.length);
             var arrayId = this.id;
-            var userLat = lat; console.log(lat);
-            var userLong = long; console.log(long);
+            var userLat = lat; console.log("Your lat is: " + lat);
+            var userLong = long; console.log("Your Long is: " + long);
             
             console.log("This is arrayID: " + arrayId);
             console.log(Events[arrayId].eventName);
             
             $("#eventHeader").append(Events[arrayId].eventName);
             $("#eventDesc").append(Events[arrayId].eventDesc);
-            
-            //$("#strtEventLat").append(Events[arrayId].startLat);
-            //$("#strtEventLong").append(Events[arrayId].startLong);
-            //$("#endEventLat").append(Events[arrayId].endLat);
-            //$("#endEventLong").append(Events[arrayId].endLong);
             
             initMap(Events[arrayId].startLat, Events[arrayId].startLong, Events[arrayId].endLat, Events[arrayId].endLong);
             
@@ -226,6 +221,7 @@ function failPosition(error) {
 
  function initMap(startLat, startLong, endLat, endLong) {
     // Create a map object and specify the DOM element for display.
+    var myLatlng = new google.maps.LatLng(parseFloat(startLat),parseFloat(startLong));
     var map = new google.maps.Map(document.getElementById("map"), {
     center: {lat: startLat, lng: startLong},
     zoom: 10
