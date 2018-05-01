@@ -143,7 +143,11 @@ $(document).on('pageinit', function() {
         //refresh the listview
         $("#EventList").listview("refresh");
         
-        $(".EventButton").click(function(){ 
+        $(".EventButton").click(function(){
+            $(".eventHeader").empty();
+            $(".eventDesc").empty();
+             $(".milesId").empty();
+            
             console.log(Events.length);
             var arrayId = this.id;
             var userLat = lat; console.log(lat);
@@ -154,7 +158,6 @@ $(document).on('pageinit', function() {
             
             $("#eventHeader").append(Events[arrayId].eventName);
             $("#eventDesc").append(Events[arrayId].eventDesc);
-            $("#milesId").append(Events[arrayId].eventDesc);
             
             //$("#strtEventLat").append(Events[arrayId].startLat);
             //$("#strtEventLong").append(Events[arrayId].startLong);
