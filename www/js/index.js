@@ -149,6 +149,9 @@ $(document).on('pageinit', function() {
             var arrayId = this.id;
             console.log("This is arrayID: " + arrayId);
             console.log(Events[arrayId].eventName); 
+            $("#eventHeader").append(Events[arrayId].eventName);
+            $("#eventDesc").append(Events[arrayId].eventDesc);
+            
             $("#strtEventLat").append(Events[arrayId].startLat);
             $("#strtEventLong").append(Events[arrayId].startLong);
             $("#endEventLat").append(Events[arrayId].endLat);
