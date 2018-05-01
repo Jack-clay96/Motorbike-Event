@@ -145,17 +145,24 @@ $(document).on('pageinit', function() {
         
         $(".EventButton").click(function(){ 
             console.log(Events.length);
-        
             var arrayId = this.id;
+            var userLat = lat.toRadians(); console.log(lat);
+            var userLong = long; console.log(long);
+            
             console.log("This is arrayID: " + arrayId);
-            console.log(Events[arrayId].eventName); 
+            console.log(Events[arrayId].eventName);
+            
             $("#eventHeader").append(Events[arrayId].eventName);
             $("#eventDesc").append(Events[arrayId].eventDesc);
+            $("#milesId").append(Events[arrayId].eventDesc);
             
-            $("#strtEventLat").append(Events[arrayId].startLat);
-            $("#strtEventLong").append(Events[arrayId].startLong);
-            $("#endEventLat").append(Events[arrayId].endLat);
-            $("#endEventLong").append(Events[arrayId].endLong);
+            //$("#strtEventLat").append(Events[arrayId].startLat);
+            //$("#strtEventLong").append(Events[arrayId].startLong);
+            //$("#endEventLat").append(Events[arrayId].endLat);
+            //$("#endEventLong").append(Events[arrayId].endLong);
+            
+            initmap(Events[arrayId].startLat, Events[arrayId].startLong, Events[arrayId].endLat, Events[arrayId].endLong);
+            
             console.log("Event button clicked");
             location.href="#eventMapPage";
         });
@@ -211,3 +218,23 @@ function failPosition(error) {
         }
 
 
+
+
+ function initMap(startLat, startLong, endLat, endLong) {
+    // Create a map object and specify the DOM element for display.
+    var map = new google.maps.Map(document.getElementById("map"), {
+    center: {lat: "#strtEventLat", lng: "#strtEventLong"},
+    zoom: 10
+    });
+        
+    var marker = new google.maps.Marker({
+            position: {lat: startLat, lng: startLong},
+            map: map,
+            title: "Start Event Location" 
+            });
+    var marker = new google.maps.Marker({
+            position: {lat: endLat, lng: endLong},
+            map: map,
+            title: "End Event Location" 
+            });
+}

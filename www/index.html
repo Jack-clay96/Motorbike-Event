@@ -39,8 +39,8 @@
       	<input type="text" name="longtext" id="longtext" value=""  />
       	<label for="lattext">Latitude:</label>
       	<input type="text" name="lattext" id="lattext" value=""  />
-        <label for="lattext">Miles:</label>
-      	<input type="number" name="milenum" id="miles" value=""  />   
+        <label for="Miletext">Miles:</label>
+      	<input type="number" name="milenum" id="milesId" value=""  />   
         </div>
         
 </div> 
@@ -58,9 +58,9 @@
     
     <!--Event Map  Page -->
 <div data-role="page" id="eventMapPage" class = "homeBG">
-    <h1 id ="eventHeader">Ride not found</h1>
+    <h1 id ="eventHeader"></h1>
     <a href="#myPanel" class="ui-btn ui-shadow ui-corner-all ui-icon-bars ui-mini ui-btn-icon-notext"></a>
-    <p id="eventDesc">Ride not found</p>
+    <p id="eventDesc"></p>
     <div id="map"></div>
 </div>    
     
@@ -121,27 +121,8 @@
 </div>
     
     <!--MAP on Map Event Page-->
-<script>
-    function initMap() {
-    // Create a map object and specify the DOM element for display.
-    var map = new google.maps.Map(document.getElementById("map"), {
-    center: {lat: "#strtEventLat", lng: "#strtEventLong"},
-    zoom: 10
-    });
-        
-    var marker = new google.maps.Marker({
-            position: {lat: "#strtEventLat", lng: "#strtEventLong"},
-            map: map,
-            title: "Start Event Location" 
-            });
-    var marker = new google.maps.Marker({
-            position: {lat: "#endEventLat", lng: "#endEventLong"},
-            map: map,
-            title: "End Event Location" 
-            });
-}
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIE4T2qBcQEqVA2mosCHC3DQ9gVyu5YQA&callback=initMap"
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIE4T2qBcQEqVA2mosCHC3DQ9gVyu5YQA"
         async defer>
 </script>
 
