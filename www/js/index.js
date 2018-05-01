@@ -223,7 +223,7 @@ function failPosition(error) {
  function initMap(startLat, startLong, endLat, endLong) {
     // Create a map object and specify the DOM element for display.
     var map = new google.maps.Map(document.getElementById("map"), {
-    center: {lat: "#strtEventLat", lng: "#strtEventLong"},
+    center: {lat: startLat, lng: startLong},
     zoom: 10
     });
         
