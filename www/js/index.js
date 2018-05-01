@@ -132,8 +132,6 @@ $(document).on('pageinit', function() {
     //LISTING THE DATABASE
     function processResults(Events) {
         
-  
-        
     $("#EventList").empty();
         
     for (var i = 0; i<Events.length; i++)
@@ -145,21 +143,16 @@ $(document).on('pageinit', function() {
         //refresh the listview
         $("#EventList").listview("refresh");
         
+        $(".EventButton").click(function(){ 
+            console.log(productInfo.length);
         
-         $(".EventButton").click(function(){ 
-             
-             console.log(this.id);
-             
-             //query backendless for events matching this event name. FOR GETTING DATA SPECIFIC FOR EVENT
-             Backendless.Data.of( "Events" ).findById( this.id )
-            .then( function( result ) {
-            //data about event here
-            $("strtEventLat").append(this.id.startLat);
-            })
-            .catch( function( error ) {
-            });
-             
-             
+            var arrayId = this.id;
+            console.log("This is arrayID: " + arrayId);
+            console.log(EventList[arrayId].eventName); 
+            $("#strtEventLat").append(Events[arrayId].startLat);
+            $("#strtEventLong").append(Events[arrayId].startLong);
+            $("#endEventLat").append(Events[arrayId].endLat);
+            $("#endEventLong").append(Events[arrayId].endLong);
             console.log("Event button clicked");
             location.href="#eventMapPage";
         });
