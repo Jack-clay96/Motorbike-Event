@@ -144,9 +144,10 @@ $(document).on('pageinit', function() {
         $("#EventList").listview("refresh");
         
         $(".EventButton").click(function(){
-            $(".eventHeader").empty();
-            $(".eventDesc").empty();
-             $(".milesId").empty();
+            
+            $("#eventHeader").empty();
+            $("#eventDesc").empty();
+             $("#milesId").empty();
             
             console.log(Events.length);
             var arrayId = this.id;
