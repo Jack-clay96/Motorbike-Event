@@ -109,7 +109,7 @@ $(document).on('pageinit', function() {
             .catch( gotError );
     });
         
-    /*Location permission
+    /*Location permission*/
     navigator.geolocation.activator.askActivation(function(response) {
     //Success callback 
         console.log("Success: " + response);
@@ -118,7 +118,7 @@ $(document).on('pageinit', function() {
         
     //Failure callback 
                 console.log("Failure: " + response);
-    });*/
+    });
         
 }
 
