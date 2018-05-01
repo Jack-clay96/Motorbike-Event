@@ -109,7 +109,7 @@ $(document).on('pageinit', function() {
             .catch( gotError );
     });
         
-    /*Location permission*/
+    /*Location permission
     navigator.geolocation.activator.askActivation(function(response) {
     //Success callback 
         console.log("Success: " + response);
@@ -118,7 +118,7 @@ $(document).on('pageinit', function() {
         
     //Failure callback 
                 console.log("Failure: " + response);
-    });
+    });*/
         
 }
 
@@ -146,7 +146,7 @@ $(document).on('pageinit', function() {
         $(".EventButton").click(function(){ 
             console.log(Events.length);
             var arrayId = this.id;
-            var userLat = lat.toRadians(); console.log(lat);
+            var userLat = lat; console.log(lat);
             var userLong = long; console.log(long);
             
             console.log("This is arrayID: " + arrayId);
