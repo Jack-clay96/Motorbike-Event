@@ -137,7 +137,7 @@ $(document).on('pageinit', function() {
     for (var i = 0; i<Events.length; i++)
         {
             //display the first task in an array of tasks. alert(tasks[2].Task)
-            $("#EventList").append("<li><a class=" + idEvent + " id=" + Events[i].objectId  + " >" +Events[i].eventName+"<br>"+"miles away frrom user"+"</a></li>"); //#EventList where to show list in html. Events[i] is database. eventName is attribute
+            $("#EventList").append("<li><a class=" + idEvent + " id=" + i  + " >" + Events[i].eventName+"<br>"+"miles away frrom user"+"</a></li>"); //#EventList where to show list in html. Events[i] is database. eventName is attribute
         }
             
         //refresh the listview
