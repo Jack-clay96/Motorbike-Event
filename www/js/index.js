@@ -22,7 +22,7 @@ $(document).on('pageinit', function() {
 var idEvent = "EventButton";
 var dataQueryBuilder = Backendless.DataQueryBuilder.create()
 dataQueryBuilder.setSortBy( ["created"] );
-document.addEventListener("deviceready", onDeviceReady, false);
+document.addEventListener("deviceready", onDeviceReady);
 $(document).on("pageshow","#homePage", onPageShow); //When home page shows
 $(document).on("click", "#addConfirmButton", onAddEvent);
 
