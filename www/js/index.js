@@ -1,6 +1,6 @@
 /*Backendless: https://backendless.com/docs/js/doc.html#welcome*/
-
 Backendless.initApp("BEC3A11B-2A08-4B8F-FF29-4F33380A3900","3C8378C2-F2B4-F4C9-FFCE-F0C165EBFB00"); //AppID then JS API key
+document.addEventListener("deviceready", onDeviceReady, false);
 
 //Location
 var watchID;
@@ -24,7 +24,6 @@ var idEvent = "EventButton";
 var dataQueryBuilder = Backendless.DataQueryBuilder.create()
 dataQueryBuilder.setSortBy( ["created"] );
 $(document).on("pageshow","#homePage", onPageShow); //When home page shows
-document.addEventListener("deviceready", onDeviceReady, false);
 $(document).on("click", "#addConfirmButton", onAddEvent);
 
 // device APIs are available
