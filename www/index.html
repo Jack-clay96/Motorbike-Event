@@ -15,33 +15,7 @@
     
 <body>
 
-
-    
-    <!-- Home Page -->
-<div data-role="page" id="homePage" class = "homeBG">
-    <button id="logout" class="logout">Logout</button> <br> <br> 
-    <a href="#myPanel" class="ui-btn ui-shadow ui-corner-all ui-icon-bars ui-mini ui-btn-icon-notext"></a>
-  	     <div role="main" class="loginForm">
-            <h1 class="homepageh">Motorbike-Event</h1>
-                <div class ="ui-content ui-body-b">
-                    <!--list of motorbike events // Also need GPRS location.-->
-                    <ul data-role="listview" id="EventList">
-                        <li>Please Wait</li>
-   	                    <li>Getting Events</li>
-                    </ul>
-                </div>  
-        </div>
-        
-</div> 
-    
-    <!--Event Map  Page -->
-<div data-role="page" id="eventMapPage" class = "homeBG">
-    <h1 id ="eventHeader"></h1>
-    <a href="#myPanel" class="ui-btn ui-shadow ui-corner-all ui-icon-bars ui-mini ui-btn-icon-notext"></a>
-    <p id="eventDesc"></p>
-    <div id="map"></div>
-</div>    
-    
+<!--Login page -->
 <div data-role="page" id="loginPage" class = "BG">
         
   	<div role="main" class="ui-content">
@@ -78,8 +52,33 @@
         <button href="#loginPage" id="ForgpassBut" class="">Confirm</button> <!-- Send email with password? Look at backendless help for it -->
     </div>
 </div>
-
+    
     <!-- Home Page -->
+<div data-role="page" id="homePage" class = "homeBG">
+    <button id="logout" class="logout">Logout</button> <br> <br> 
+    <a href="#myPanel" class="ui-btn ui-shadow ui-corner-all ui-icon-bars ui-mini ui-btn-icon-notext"></a>
+  	     <div role="main" class="loginForm">
+            <h1 class="homepageh">Motorbike-Event</h1>
+                <div class ="ui-content ui-body-b">
+                    <!--list of motorbike events // Also need GPRS location.-->
+                    <ul data-role="listview" id="EventList">
+                        <li>Please Wait</li>
+   	                    <li>Getting Events</li>
+                    </ul>
+                </div>  
+        </div>
+        
+</div> 
+    
+    <!--Event Map Page -->
+<div data-role="page" id="eventMapPage" class = "homeBG">
+    <h1 id ="eventHeader"></h1>
+    <a href="#myPanel" class="ui-btn ui-shadow ui-corner-all ui-icon-bars ui-mini ui-btn-icon-notext"></a>
+    <p id="eventDesc"></p>
+    <div id="map"></div>
+</div>    
+
+    <!-- Add Event Page -->
 <div data-role="page" id="addPage" class = "homeBG">
     <a href="#myPanel" class="ui-btn ui-shadow ui-corner-all ui-icon-bars ui-mini ui-btn-icon-notext"></a>
   	     <div role="main" class="loginForm">
