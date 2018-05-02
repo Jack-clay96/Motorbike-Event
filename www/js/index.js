@@ -136,7 +136,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
     for (var i = 0; i<Events.length; i++)
         {
             //display the first task in an array of tasks. alert(tasks[2].Task)
-            $("#EventList").append("<li><a class=" + idEvent + " id=" + i  + " >" + Events[i].eventName+"<br>"+lat, long, Events[i].startLat, Events[i].startLong)+"</a></li>"); 
+            $("#EventList").append("<li><a class=" + idEvent + " id=" + i  + " >" + Events[i].eventName+"<br>"+ distance(lat, long, Events[i].startLat, Events[i].startLong)+"</a></li>"); 
             //#EventList where to show list in html. Events[i] is database. eventName is attribute
         }
             
