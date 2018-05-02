@@ -108,19 +108,7 @@ $(document).on("click", "#addConfirmButton", onAddEvent);
             Backendless.UserService.logout()
             .then( userLoggedOut )
             .catch( gotError );
-    });
-        
-    /*Location permission
-    navigator.geolocation.activator.askActivation(function(response) {
-    //Success callback 
-        console.log("Success: " + response);
-        
-    }, function(response) {
-        
-    //Failure callback 
-                console.log("Failure: " + response);
-    });*/
-        
+    });   
 }
 
 /* Home Page */
@@ -146,22 +134,22 @@ $(document).on("click", "#addConfirmButton", onAddEvent);
         
         $(".EventButton").click(function(){
             
-            $("#eventHeader").empty();
+            $("#eventHeader").empty(); //Clear each time button is clicked
             $("#eventDesc").empty();
              $("#milesId").empty();
             
             console.log(Events.length);
-            var arrayId = this.id;
+            var arrayId = this.id; //id matches rows in database
             var userLat = lat; console.log("Your lat is: " + lat);
             var userLong = long; console.log("Your Long is: " + long);
             
             console.log("This is arrayID: " + arrayId);
             console.log(Events[arrayId].eventName);
             
-            $("#eventHeader").append(Events[arrayId].eventName);
-            $("#eventDesc").append(Events[arrayId].eventDesc);
+            $("#eventHeader").append(Events[arrayId].eventName); //To show the event name
+            $("#eventDesc").append(Events[arrayId].eventDesc); //To show the event Desc
             
-            initMap(Events[arrayId].startLat, Events[arrayId].startLong, Events[arrayId].endLat, Events[arrayId].endLong);
+            initMap(Events[arrayId].startLat, Events[arrayId].startLong, Events[arrayId].endLat, Events[arrayId].endLong); //call map function with long/lat's
             
             console.log("Event button clicked");
             location.href="#eventMapPage";
@@ -170,8 +158,6 @@ $(document).on("click", "#addConfirmButton", onAddEvent);
         
 
     }
-
-
 
 //Call this function when you want to watch for changes in position
     function updatePosition() {
@@ -231,7 +217,7 @@ function failPosition(error) {
 
 // Author: http://snipplr.com/view/25479/calculate-distance-between-two-points-with-latitude-and-longitude-coordinates/
     function distance(lat1, lon1, lat2, lon2) {
-        //To work out distance using long and lat
+        //To work out distance in km using long and lat
 
         var R = 6371; // km
 	   var dLat = (lat2-lat1) * Math.PI / 180;
