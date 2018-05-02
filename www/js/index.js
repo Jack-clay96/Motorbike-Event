@@ -136,7 +136,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
     for (var i = 0; i<Events.length; i++)
         {
             //display the first task in an array of tasks. alert(tasks[2].Task)
-            $("#EventList").append("<li><a class=" + idEvent + " id=" + i  + " >" + Events[i].eventName+"<br>"+ distance(lat, long, Events[i].startLat, Events[i].startLong)+"</a></li>"); 
+            $("#EventList").append("<li><a class=" + idEvent + " id=" + i  + " >" + Events[i].eventName+"<br>"+ distance(lat, long, Events[i].startLat, Events[i].startLong, "K")+"</a></li>"); 
             //#EventList where to show list in html. Events[i] is database. eventName is attribute
         }
             
@@ -242,7 +242,7 @@ function failPosition(error) {
 }
 
 // Author: https://www.geodatasource.com/developers/javascript
-    function distance(lat1, lon1, lat2, lon2) {
+    function distance(lat1, lon1, lat2, lon2, unit) {
         console.log("lat1: " + lat1)
         console.log("long1: " + lon1)
         console.log("eventlat: " + lat2)
@@ -256,5 +256,6 @@ function failPosition(error) {
 	   dist = dist * 180/Math.PI;
 	   dist = dist * 60 * 1.1515;
         console.log("dist: " + dist);
+        if (unit=="K") { dist = dist * 1.609344 }
         return dist;
     }
