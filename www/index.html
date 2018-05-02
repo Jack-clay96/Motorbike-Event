@@ -29,15 +29,7 @@
                         <li>Please Wait</li>
    	                    <li>Getting Events</li>
                     </ul>
-                </div>
-        
-        <!--Location GPRS-->
-        <label for="longtext">Longitude:</label>
-      	<input type="text" name="longtext" id="longtext" value=""  />
-      	<label for="lattext">Latitude:</label>
-      	<input type="text" name="lattext" id="lattext" value=""  />
-        <label for="Miletext">Miles:</label>
-      	<input type="number" name="milenum" id="milesId" value=""  />   
+                </div>  
         </div>
         
 </div> 
@@ -97,7 +89,31 @@
         <button href="#loginPage" id="ForgpassBut" class="">Confirm</button> <!-- Send email with password? Look at backendless help for it -->
     </div>
 </div>
-    
+
+    <!-- Home Page -->
+<div data-role="page" id="addPage" class = "homeBG">
+    <a href="#myPanel" class="ui-btn ui-shadow ui-corner-all ui-icon-bars ui-mini ui-btn-icon-notext"></a>
+  	     <div role="main" class="loginForm">
+            <h1>Create Event</h1>
+            <div class ="ui-content ui-body-b">
+                <!--Location GPRS-->
+                <label for="longtext">Your Longitude:</label>
+      	         <input type="text" name="longtext" id="longtext" />
+      	         <label for="lattext">Your Latitude:</label>
+      	         <input type="text" name="lattext" id="lattext" />
+                <br>
+                <!--Adding an Event form -->
+                <input type="text" id="newEventName" placeholder="Enter New Event Name"/>
+                <input type="text" id="newEventDesc" placeholder="Enter New Event Description"/>
+                <input type="number" id="newStartLat" placeholder="Enter starting latitude"/>
+                <input type="number" id="newStartLong" placeholder="Enter starting longitude"/>
+                <input type="number" id="newEndLat" placeholder="Enter Ending latitude"/>
+                <input type="number" id="newEndLong" placeholder="Enter Ending longitude"/>
+                <button id="addConfirmButton" type="submit">Confirm</button>
+            </div>  
+        </div>
+        
+</div> 
     
     <!-- Panel / Action bar -->
 <div data-role="panel" id="myPanel" data-position="left" data-display="overlay" data-theme="b">
@@ -111,7 +127,7 @@
                  <a id="calendarAction" href="#calendarPage">Calendar</a>
              </li>
              <li data-icon="gear">
-                <a id="accountAction" href="#accountPage">Account</a>
+                <a id="accountAction" href="#addPage">Create event</a>
              </li>
         </ul>
     </div>

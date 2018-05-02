@@ -25,6 +25,7 @@ var dataQueryBuilder = Backendless.DataQueryBuilder.create()
 dataQueryBuilder.setSortBy( ["created"] );
 $(document).on("pageshow","#homePage", onPageShow); //When home page shows
 document.addEventListener("deviceready", onDeviceReady, false);
+$(document).on("click", "#addConfirmButton", onAddEvent);
 
 // device APIs are available
 //
@@ -136,7 +137,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
     for (var i = 0; i<Events.length; i++)
         {
             //display the first task in an array of tasks. alert(tasks[2].Task)
-            $("#EventList").append("<li><a class=" + idEvent + " id=" + i  + " >" + Events[i].eventName+"<br>"+ distance(Events[i].startLat, Events[i].startLong, lat, long)+"</a></li>"); 
+            $("#EventList").append("<li><a class=" + idEvent + " id=" + i  + " >" + Events[i].eventName+"<br>"+ distance(Events[i].startLat, Events[i].startLong, lat, long)+ " away" + "</a></li>"); 
             //#EventList where to show list in html. Events[i] is database. eventName is attribute
         }
             
@@ -206,19 +207,6 @@ function failPosition(error) {
 	
 }
 
-/* Errors */
-        function error(err) {
-            alert(err);
-        }
-       function gotError( err ) // see more on error handling
-        {
-            console.log( "error message - " + err.message );
-            console.log( "error code - " + err.statusCode );
-        }
-
-
-
-
  function initMap(startLat, startLong, endLat, endLong) {
     // Create a map object and specify the DOM element for display.
     //var myLatlng = new google.maps.LatLng(parseFloat(startLat),parseFloat(startLong));
@@ -241,13 +229,11 @@ function failPosition(error) {
             });
 }
 
-// Author: https://www.geodatasource.com/developers/javascript
+// Author: http://snipplr.com/view/25479/calculate-distance-between-two-points-with-latitude-and-longitude-coordinates/
     function distance(lat1, lon1, lat2, lon2) {
-        console.log("eventlat: " + lat1)
-        console.log("eventlong: " + lon1)
-        console.log("lat2: " + lat2)
-        console.log("long2: " + lon2)
-        var R = 6371; // km (change this constant to get miles)
+        //To work out distance using long and lat
+
+        var R = 6371; // km
 	   var dLat = (lat2-lat1) * Math.PI / 180;
 	   var dLon = (lon2-lon1) * Math.PI / 180;
 	   var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
@@ -259,3 +245,39 @@ function failPosition(error) {
         console.log("distance: " + d)
         return Math.round(d)+"km";
     }
+
+// Creating a new event
+function onAddEvent() {
+    console.log("add Event button clicked");
+    //get text input from field
+    var Eventtext = $("#newEventName").val();
+    var Desctext = $("#newEventDesc").val();
+    var StartLattext = parseFloat($("#newStartLat").val());
+    var StartLongtext = parseFloat($("#newStartLong").val());
+    var EndLattext = parseFloat($("#newEndLat").val());
+    var EndLongtext = parseFloat($("#newEndLong").val());
+    //Adding to backendless
+    var newEvent = {};
+    newEvent.eventName = Eventtext;
+    newEvent.eventDesc = Desctext;
+    newEvent.startLat = StartLattext;
+    newEvent.startLong = StartLongtext;
+    newEvent.endLat = EndLattext;
+    newEvent.endLong = EndLongtext;
+    Backendless.Data.of("Events").save(newEvent).then(saved).catch(error);
+	}
+
+function saved(savedTask) {
+    console.log( "new Contact instance has been saved" + savedTask);
+    alert("Database has been updated");
+}
+
+/* Errors */
+function error(err) {
+    alert(err);
+}
+function gotError( err ) // see more on error handling
+{
+console.log( "error message - " + err.message );
+console.log( "error code - " + err.statusCode );
+}
