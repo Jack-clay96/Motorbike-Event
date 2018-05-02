@@ -4,20 +4,13 @@ Backendless.initApp("BEC3A11B-2A08-4B8F-FF29-4F33380A3900","3C8378C2-F2B4-F4C9-F
 
 //Location
 var watchID;
-var long;
-var lat;
+var long= 0;
+var lat= 0;
 var locationOptions = { 
 	maximumAge: 10000, 
 	timeout: 6000, 
 	enableHighAccuracy: true 
 };
-
-//Event list
-var idEvent = "EventButton";
-var dataQueryBuilder = Backendless.DataQueryBuilder.create()
-dataQueryBuilder.setSortBy( ["created"] );
-$(document).on("pageshow","#homePage", onPageShow); //When home page shows
-document.addEventListener("deviceready", onDeviceReady, false);
 
 //Location
 $(document).on('pageinit', function() {
@@ -25,6 +18,13 @@ $(document).on('pageinit', function() {
 	//set up listener for button clicks
 	updatePosition();
 });
+
+//Event list
+var idEvent = "EventButton";
+var dataQueryBuilder = Backendless.DataQueryBuilder.create()
+dataQueryBuilder.setSortBy( ["created"] );
+$(document).on("pageshow","#homePage", onPageShow); //When home page shows
+document.addEventListener("deviceready", onDeviceReady, false);
 
 // device APIs are available
 //
@@ -126,7 +126,6 @@ $(document).on('pageinit', function() {
  function onPageShow() {
 	console.log("page shown");
     Backendless.Data.of("Events").find(dataQueryBuilder).then(processResults).catch(error); // find (...) is used here to order the list by created.
-    
     }
         
     //LISTING THE DATABASE
@@ -134,10 +133,14 @@ $(document).on('pageinit', function() {
         
     $("#EventList").empty();
         
+        var latitude = position.coords.latitude;
+	   var longitude = position.coords.longitude;
+        
     for (var i = 0; i<Events.length; i++)
         {
             //display the first task in an array of tasks. alert(tasks[2].Task)
-            $("#EventList").append("<li><a class=" + idEvent + " id=" + i  + " >" + Events[i].eventName+"<br>"+"miles away frrom user"+"</a></li>"); //#EventList where to show list in html. Events[i] is database. eventName is attribute
+            $("#EventList").append("<li><a class=" + idEvent + " id=" + i  + " >" + Events[i].eventName+"<br>"+distance($('#lattext').val(latitude), $('#longtext').val(longitude), Events[i].startLat, Events[i].startLong)+"</a></li>"); 
+            //#EventList where to show list in html. Events[i] is database. eventName is attribute
         }
             
         //refresh the listview
@@ -165,6 +168,7 @@ $(document).on('pageinit', function() {
             console.log("Event button clicked");
             location.href="#eventMapPage";
         });
+        
         
 
     }
@@ -197,7 +201,6 @@ function successPosition(position) {
 	$('#longtext').val(longitude);
     long = longitude;
     stopPosition();
-	
 }
 
 function failPosition(error) {
@@ -222,25 +225,39 @@ function failPosition(error) {
  function initMap(startLat, startLong, endLat, endLong) {
     // Create a map object and specify the DOM element for display.
     //var myLatlng = new google.maps.LatLng(parseFloat(startLat),parseFloat(startLong));
-      console.log("Error generates here? - 1");
     
     var map = new google.maps.Map(document.getElementById("map"), {
     center: {lat: startLat, lng: startLong},
     zoom: 10
     });
-        
-      console.log("Error generates here? - 2");
+
     var marker1 = new google.maps.Marker({
             position: {lat: startLat, lng: startLong},
             map: map,
             title: "Start Event Location" 
             });
-     
-     console.log("Error generates here? - 3");
+    
     var marker2 = new google.maps.Marker({
             position: {lat: endLat, lng: endLong},
             map: map,
             title: "End Event Location" 
             });
-     console.log("Error generates here? - 4");
 }
+
+// Author: https://www.geodatasource.com/developers/javascript
+    function distance(lat1, lon1, lat2, lon2) {
+        console.log("lat1: " + lat1)
+        console.log("long1: " + lon1)
+        console.log("eventlat: " + lat2)
+        console.log("eventlat: " + lon2)
+	   var radlat1 = Math.PI * lat1/180;
+	   var radlat2 = Math.PI * lat2/180;
+	   var theta = lon1-lon2;
+	   var radtheta = Math.PI * theta/180;
+	   var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+	   dist = Math.acos(dist);
+	   dist = dist * 180/Math.PI;
+	   dist = dist * 60 * 1.1515;
+        console.log("dist: " + dist);
+        return dist;
+    }
