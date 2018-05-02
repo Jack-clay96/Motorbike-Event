@@ -46,7 +46,7 @@ function onDeviceReady(){
             location.href="#homePage";
         }
  
-        console.log( username + ", " + password );
+        //console.log( username + ", " + password );
          Backendless.UserService.login( username, password, true )
             .then( userLoggedIn )
             .catch( gotError );
