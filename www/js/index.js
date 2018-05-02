@@ -138,6 +138,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
             //display the first task in an array of tasks. alert(tasks[2].Task)
             $("#EventList").append("<li><a class=" + idEvent + " id=" + i  + " >" + Events[i].eventName+"<br>"+ distance(Events[i].startLat, Events[i].startLong, lat, long, "K")+"</a></li>"); 
             //#EventList where to show list in html. Events[i] is database. eventName is attribute
+            console.log(Math.round(distance*1000)/1000);
         }
             
         //refresh the listview
