@@ -138,7 +138,6 @@ document.addEventListener("deviceready", onDeviceReady, false);
             //display the first task in an array of tasks. alert(tasks[2].Task)
             $("#EventList").append("<li><a class=" + idEvent + " id=" + i  + " >" + Events[i].eventName+"<br>"+ distance(Events[i].startLat, Events[i].startLong, lat, long, "K")+"</a></li>"); 
             //#EventList where to show list in html. Events[i] is database. eventName is attribute
-            console.log(Math.round(distance*1000)/1000);
         }
             
         //refresh the listview
@@ -256,7 +255,8 @@ function failPosition(error) {
 	   dist = Math.acos(dist);
 	   dist = dist * 180/Math.PI;
 	   dist = dist * 60 * 1.1515;
-        console.log("dist: " + dist);
-        if (unit=="K") { dist = dist * 1.609344 }
+        if (unit=="K") { dist = dist * 1.609344 
+                       console.log("dist: " + dist);
+                       }
         return dist;
     }
