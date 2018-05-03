@@ -125,7 +125,7 @@ function onDeviceReady(){
     for (var i = 0; i<Events.length; i++)
         {
             //display the first task in an array of tasks. alert(tasks[2].Task)
-            $("#EventList").append("<li><a class=" + idEvent + " id=" + i  + " >" + Events[i].eventName+"       "+Events[i].eventDate+
+            $("#EventList").append("<li><a class=" + idEvent + " id=" + i  + " >" + Events[i].eventName+"  Date: "+Events[i].eventDate+
             "<br>"+ distance(Events[i].startLat, Events[i].startLong, lat, long)+ " away" + "</a></li>"); 
             //#EventList where to show list in html. Events[i] is database. eventName is attribute
         }
