@@ -125,7 +125,8 @@ function onDeviceReady(){
     for (var i = 0; i<Events.length; i++)
         {
             //display the first task in an array of tasks. alert(tasks[2].Task)
-            $("#EventList").append("<li><a class=" + idEvent + " id=" + i  + " >" + Events[i].eventName+"<br>"+ distance(Events[i].startLat, Events[i].startLong, lat, long)+ " away" + "</a></li>"); 
+            $("#EventList").append("<li><a class=" + idEvent + " id=" + i  + " >" + Events[i].eventName+"       "+Events.[i].eventDate+
+            "<br>"+ distance(Events[i].startLat, Events[i].startLong, lat, long)+ " away" + "</a></li>"); 
             //#EventList where to show list in html. Events[i] is database. eventName is attribute
         }
             
@@ -195,7 +196,6 @@ function failPosition(error) {
 
  function initMap(startLat, startLong, endLat, endLong) {
     // Create a map object and specify the DOM element for display.
-    //var myLatlng = new google.maps.LatLng(parseFloat(startLat),parseFloat(startLong));
     
     var map = new google.maps.Map(document.getElementById("map"), {
     center: {lat: startLat, lng: startLong},
